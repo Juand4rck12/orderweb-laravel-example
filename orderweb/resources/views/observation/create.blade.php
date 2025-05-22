@@ -4,7 +4,7 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12 mb-4">
-            <form action="#" method="POST">
+            <form action="{{ route('observation.store') }}" method="POST">
                 @csrf {{-- medida de seguridad de laravel para evitar ataques --}}
                 <div class="row form-group">
                     <div class="col-lg-12 mb-4">

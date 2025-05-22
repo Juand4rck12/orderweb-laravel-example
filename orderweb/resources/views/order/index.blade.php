@@ -25,22 +25,26 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($orders as $order)
+                        
                     <tr>
-                        <td>1</td>
-                        <td>15-05-2025</td>
-                        <td>Callejon 7 muertos</td>
-                        <td>TULUÁ</td>
-                        <td>Suspensión</td>
+                        <td>{{ $order['id'] }}</td>
+                        <td>{{ $order['legalization_date'] }}</td>
+                        <td>{{ $order['address'] }}</td>
+                        <td>{{ $order['city'] }}</td>
+                        <td>{{ $order->causal->description }}</td>
+                        <td>{{ $order->observation->description }}</td>
                         <td>
-                            <a href="#" title="editar" class="btn btn-primary btn-circle btn-sm">
+                            <a href="{{ route('order.edit', $order['id']) }}" title="editar" class="btn btn-primary btn-circle btn-sm">
                                 <i class="far fa-edit"></i>
                             </a>
-                            <a href="#" title="eliminar" class="btn btn-danger btn-circle btn-sm"
-                                onclick="return remove()">
-                                <i class="fas fa-trash"></i>
+                            <a href="{{ route('order.destroy', $order['id']) }}" title="eliminar" class="btn btn-danger btn-circle btn-sm"
+                            onclick="return remove()">
+                            <i class="fas fa-trash"></i>
                             </a>
                         </td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

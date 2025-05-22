@@ -4,26 +4,36 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12 mb-4">
-            <form action="#" method="POST">
+            <form action="{{ route('technician.update', $technician['id']) }}" method="POST">
                 @csrf {{-- medida de seguridad de laravel para evitar ataques --}}
+                @method('PUT')
                 <div class="row form-group">
                     <div class="col-lg-6 mb-4">
                         <label for="document">Documento</label>
-                        <input type="number" id="document" name="document" required class="form-control">
+                        <input type="number" id="document" name="document" required 
+                         value="{{ $technician['document'] }}" class="form-control">
                     </div>
                     <div class="col-lg-6 mb-4">
                         <label for="name">Nombre</label>
-                        <input type="text" id="name" name="name" required class="form-control">
+                        <input type="text" id="name" name="name" required 
+                         value="{{ $technician['name'] }}" class="form-control">
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-lg-6 mb-4">
                         <label for="speciality">Especialidad</label>
-                        <input type="text" name="speciality" id="speciality" required class="form-control">
+                        <input list='specialities-list' class="form-control" name="speciality" id="speciality" >
+                        <datalist id="specialities-list">
+                            <option value="Instalación de redes">Instalación de redes</option>
+                            <option value="Construcción">Construcción</option>
+                            <option value="Lectura de redes">Lectura de redes</option>
+                            <option value="Plomería">Plomería</option>
+                        </datalist>
                     </div>
                     <div class="col-lg-6 mb-4">
                         <label for="phone">Teléfono</label>
-                        <input type="text" name="phone" id="phone" required class="form-control">
+                        <input type="text" name="phone" id="phone" required 
+                         value="{{ $technician['phone'] }}" class="form-control">
                     </div>
                 </div>
                 <div class="row">
