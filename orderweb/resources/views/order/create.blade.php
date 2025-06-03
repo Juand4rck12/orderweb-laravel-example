@@ -9,29 +9,32 @@
                 <div class="row form-group">
                     <div class="col-lg-6 mb-4">
                         <label for="legalization_date">Fecha legalización</label>
-                        <input type="date" id="legalization_date" name="legalization_date" required class="form-control">
+                        <input type="date" id="legalization_date" name="legalization_date" 
+                            required class="form-control" value="{{ old('legalization_date') }}">
                     </div>
                     <div class="col-lg-6 mb-4">
                         <label for="address">Dirección</label>
-                        <input type="text" id="address" name="address" required class="form-control">
+                        <input type="text" id="address" name="address" 
+                            required class="form-control" value="{{ old('address') }}">
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-lg-4 mb-4">
                         <label for="city">Ciudad</label>
-                        <select name="city" id="city" class="form-control">
-                            <option value="TULUA">TULUÁ</option>
-                            <option value="CALI">CALI</option>
-                            <option value="BUGA">BUGA</option>
-                            <option value="PALMIRA">PALMIRA</option>
-                        </select>
+                        <select name="causal" id="causal" class="form-control" value="{{ old('city') }}">
+                        @foreach ($cities as $city)
+                        <option value="{{ $city['value'] }}" {{ old('city')==$city['name'] ? 'selected' : '' }}>{{
+                            $city['name'] }}</option>
+                        @endforeach
+                    </select>
                     </div>
                     <div class="col-lg-4 mb-4">
                         <label for="causal_id">Causa</label>
                         <select name="causal_id" id="causal_id" class="form-control">
                             <option value="">Seleccione</option>
                             @foreach ($causals as $causal)
-                                <option value="{{ $causal['id'] }}">
+                                <option value="{{ $causal['id'] }}"
+                                @if (old('causal_id') == $causal['id']) selected @endif>
                                     {{ $causal['description'] }}
                                 </option>
                             @endforeach
@@ -42,7 +45,8 @@
                         <select name="observation_id" id="observation_id" class="form-control">
                             <option value="">Seleccione</option>
                             @foreach ($observations as $observation)
-                                <option value="{{ $observation['id'] }}">
+                                <option value="{{ $observation['id'] }}"
+                                @if (old('observation_id') == $observation['id']) selected @endif>
                                     {{ $observation['description'] }}
                                 </option>
                             @endforeach
