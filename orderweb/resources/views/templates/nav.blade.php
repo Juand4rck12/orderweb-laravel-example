@@ -162,6 +162,19 @@
                 </div>
             </div>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse8" data-target="#collapse7" aria-expanded="true"
+                aria-controls="collapse8">
+                <i class="fas fa-fw fa-wrench"></i>
+                <span>Supervisores</span>
+            </a>
+            <div id="collapse8" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{ route('users.index') }}">Envío de correo</a>
+                </div>
+            </div>
+        </li>
         @endcan
 
 

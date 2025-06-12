@@ -8,6 +8,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TechnicianController;
 use App\Http\Controllers\TypeActivityController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -110,4 +111,9 @@ Route::middleware(['auth', 'can:administrador'])->prefix('reports')->group(funct
         -> name('reports.activities_technicians');
     Route::post('/export_orders_by_date', [ReportController::class, 'export_orders_by_date']) 
         -> name('reports.orders_date');
+});
+
+Route::middleware(['auth', 'can:administrador'])->prefix('users')->group(function(){
+    Route::get('/index', [UsersController::class, 'index']) -> name('users.index');
+    Route::post('/send_email', [UsersController::class, 'send_email'])-> name('users.send_email');
 });
